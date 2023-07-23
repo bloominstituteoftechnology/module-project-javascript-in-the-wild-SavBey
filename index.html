@@ -21,7 +21,7 @@
 
     // 👉 CHALLENGE 1
     // 🧠 The function swapper takes an array and swaps its first and last elements.
-    // 🧠 If the array has fewer than two elements the function returns the string "No swap performed".
+    // 🧠 If the array has fewer than two elements th e function returns the string "No swap performed".
     // 🧠 Examples of usage:
     // swapper(['a', 'b']) // should return ['b', 'a']
     // swapper(['a', 'b', 'c']) // should return ['c', 'b', 'a']
@@ -29,9 +29,33 @@
     // ❗ Notes
     // 🧠 Try using destructuring to grab a reference to the first element of the array
     // 🧠 Try using the at method of arrays to grab the last element
-    const swapper = () => {
-
+    const swapper = (array) => {
+      if (array.length < 2) {
+        return "No swap performed"
+      }
+      let copyArray = [...array]
+      // console.log('array', array)
+      let first = array[0];
+      // console.log("first", first)
+      let last = array[array.length - 1]
+      // console.log('last', last)
+      //console.log(copyArray.pop())
+      copyArray = copyArray.slice(1, -1)
+      let newArray = [last, ...copyArray, first]
+      return newArray
+      //  console.log(answer())
+      // if (answer() == 'Yes') {
+      // console.log('happy yes')
+      //} else {
+      //   console.log('no')
+      //  }
     }
+    // const answer = () => {
+    //   return 'Yes'
+    // }
+
+
+    swapper(['a', 'b', 'c'])
 
     // 👉 CHALLENGE 2
     // 🧠 The function headAndTail takes an array as its argument.
@@ -46,9 +70,13 @@
     // 🧠 Try using the ternary operator instead of a conditional statement when deciding what to return.
     // 🧠 So instead of doing `if ('foo') return 'bar' else return 'baz'` do `return 'foo' ? 'bar' : 'baz'`
     // 🧠 The above recommendations allow to write the whole function body in just two clean lines!
-    const headAndTail = () => {
+    const headAndTail = (arr) => {
+      let copyArray = [...arr]
+      copyArray = copyArray.slice(1)
+      return arr.length === 0 ? "This array is empty" : [arr[0], [...copyArray]]
 
-    }
+
+    };
 
     // 👉 CHALLENGE 3
     // 🧠 The function devGreet takes an isFrontend Boolean, and an isHappy Boolean, as arguments.
@@ -59,7 +87,8 @@
     // devGreet(false, false) // should return "Hey, I am a backend dev and I am sad"
     // ❗ Notes
     // 🧠 Use ternary expressions to construct the string.
-    const devGreet = () => {
+    const devGreet = (isFrontend, isHappy) => {
+      return `Hey, I am a ${isFrontend === true ? 'frontend' : 'backend'} dev and I am ${isHappy === true ? 'happy' : 'sad'}`
 
     }
 
@@ -72,8 +101,10 @@
     // recognize({}) // should return "Hidden Person Rocks!"
     // ❗ Notes
     // 🧠 Try using destructuring to grab the name, and a return followed by a ternary expression.
-    const recognize = () => {
-
+    const recognize = (user) => {
+      const { name } = user;
+      //destructuring to grab the name of the user
+      return name ? `${name} Rules!` : "Hidden Person Rocks!"
     }
 
     // 👉 CHALLENGE 5
@@ -83,9 +114,29 @@
     // processBooleans([1, 0, 0, 1, 0]) // should return ["Y", "N", "N", "Y", "N"]
     // ❗ Notes
     // 🧠 Using map, arrow function syntax, and the ternary, you can make this function a short one-liner
-    const processBooleans = () => {
+    //const processBooleans = (integers) => {
+    //use map
+    //ternary 
 
-    }
+    // }
+    const processBooleans = (arr) => arr.map(i => i === 1 ? 'Y' : 'N')
+    // function processBooleans(arr){
+    //  for (let i = 0; i<arr.length; i++){
+    //const newArr = arr.map(i=>i === 1 ? 'Y':'N')
+    //   if ( arr[i] === 1 ){
+    //   arr[i] = "Y"
+    //   }
+    //   else {
+    //     arr[i] = "N"
+    // }
+    // arr[i] === 1 ? "Y":"N"
+
+    // }
+    //    return newArr
+    // }
+
+
+
 
     // 👉 CHALLENGE 6
     // 🧠 The function reverseString takes a string as its argument, and returns it reversed.
@@ -97,8 +148,17 @@
     // 🧠 Split the string but do not use the reverse method of arrays. Let's do it manually.
     // 🧠 We suggest using a for loop. Research how to loop backwards over an array, starting at the last element.
     // 🧠 Use a ternary in the return statement.
-    const reverseString = () => {
-
+    const reverseString = (string) => {
+      const newString = [];
+      for (let i = string.length - 1; i >= 0; i--) {
+        const backwardsString = string[i]
+        newString.push(backwardsString)
+      }
+     // console.log(string)
+      const joinString = newString.join('')
+     // console.log(joinString)
+     return joinString === string ? "It's a palindrome!" : joinString
+       
     }
 
     // 👉 CHALLENGE 7
@@ -113,9 +173,17 @@
     // ❗ Notes
     // 🧠 Even though object properties have no particular order, to avoid confusing
     // the test runner, please set in each object first name, then age, and finally jsLover.
-    const zip = () => {
-
-    }
+    const zip = (arr1, arr2, arr3) => {
+    newArray = [];
+    for (let i= 0; i < arr1.length;i++){
+    let person = {
+      name:arr1[i], 
+      born:arr2[i],
+      jsLover:arr3[i] }
+      newArray.push(person)
+    } 
+    return newArray
+  }
 
     // 🧪 TESTS, do not work below this line
     // 🧪 TESTS, do not work below this line
